@@ -13,7 +13,7 @@ library(RColorBrewer)
 # 读取PCA结果数据
 cat("正在读取PCA数据...\n")
 # !注意：请根据实际数据路径修改以下路径
-data <- read.csv("/mnt/f/OneDrive/科研/4_代码/2-Dimensionality-analysis/3-PCA可视化/data/example_pca.csv", header = TRUE)
+data <- read.csv("/mnt/c/Users/Administrator/Desktop/PCA降维结果.csv", header = TRUE)
 
 # 数据基本信息
 cat("数据概览:\n")
@@ -42,7 +42,7 @@ frame <- data.frame(
   ID = data$ID,
   PC1 = PC1,
   PC2 = PC2,
-  PC3 = PC3, #! 如果没有PC3数据，可以注释掉这一行
+  # PC3 = PC3, #! 如果没有PC3数据，可以注释掉这一行
   Class_big = data$Class_big,
   Class_small = data$Class_small
 )
@@ -55,7 +55,7 @@ cat("\n数据框创建完成，包含", nrow(frame), "个样本\n")
 
 
 # ========== 新增：从 color.csv 读取颜色映射 ===========
-color_map_file <- "/mnt/f/OneDrive/文档（科研）/脚本/Download/2-Dimensionality-analysis/3-PCA可视化/conf/color.csv"
+color_map_file <- "/mnt/c/Users/Administrator/Desktop/color_PCA.csv"
 color_df <- read.csv(color_map_file, header = TRUE, stringsAsFactors = FALSE)
 color_map_from_file <- setNames(color_df$color, color_df$Class_big)
 # 自动分配颜色的调色板
@@ -154,7 +154,7 @@ cat("\n开始绘制PCA散点图...\n")
 
 # 创建PDF文件
 #! 注意：请根据实际数据路径修改以下路径
-pdf("/mnt/f/OneDrive/文档（科研）/脚本/Download/2-Dimensionality-analysis/3-PCA可视化/output/PCA_R_plot.pdf", width = plot_params$pdf_width, height = plot_params$pdf_height)
+pdf("/mnt/c/Users/Administrator/Desktop/PCA_plot.pdf", width = plot_params$pdf_width, height = plot_params$pdf_height)
 
 # 设置图形布局：上方主图，下方图例
 layout(matrix(c(1, 2)), widths = c(1, 1), heights = c(4, 1))
